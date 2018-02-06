@@ -4,7 +4,7 @@ import Homepage from './components/pages/Homepage';
 import Loginpage from './components/pages/Loginpage';
 
 const App=()=>(
-  <div>
+  <div className="ui container">
     <Route path="/" exact component={Homepage}/>
     <Route path="/login" exact component={Loginpage}/>
   </div>
