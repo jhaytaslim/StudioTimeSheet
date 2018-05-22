@@ -3,4 +3,14 @@
     border: 1px solid black;
     display: table;
     table-layout: fixed;
+    padding: 20px;
+}
+
+.frm-color{
+    background-color: #CECDCD
+}
+
+.ui.card {
+    display: inline-block;
+    margin: 10px;
 }
