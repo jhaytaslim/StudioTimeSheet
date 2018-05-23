@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, } from 'react-router-dom';
 import Home from './containers/HomeContainer';
-
+import {Grid} from 'semantic-ui-react';
 
 const App=()=>(
-  <div className="ui container">
+  <div >
     <Route path="/" exact component={Home}/>
   </div>
   );

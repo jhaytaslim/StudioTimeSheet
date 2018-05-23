@@ -3,7 +3,7 @@ import Validator from 'validator';
 import {clear,startAgain,showState,addDetail,loading,nextState,clearDone} from '../actions/index'
 import { connect } from 'react-redux';
 import {Header,Submission,TimeSheet} from '../components'
-import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react'
+import { Dimmer, Loader, Image, Segment,Grid } from 'semantic-ui-react'
 
 const initialState={
     Email:'',
@@ -55,12 +55,14 @@ class HomeContainer extends React.Component {
     
     validateControl=e=>{
         const errors={};
+        let TimeSpent=/\d+\shours\s\d+\smins/;
         switch (e.target.name) {
             case 'Email':
                 !Validator.isEmail(e.target.value)? errors.GoodEmail="Invalid email" : errors.GoodEmail="Valid";
                 return errors;
             case 'TimeSpent':
-                !Validator.isEmpty(e.target.value)? errors.GoodTime="Valid"  : {};
+                // !Validator.matches(/\d+hours\d+mins/,e.target.value)? errors.GoodTime="Invalid"  :errors.GoodTime="Valid" ;
+                !TimeSpent.test(e.target.value)? errors.GoodTime="Invalid"  :errors.GoodTime="Valid" ;
                 //if(!Validator.isEmpty(e.target.value)) errors.GoodTime="Valid";
                 return errors;
             case 'TypeOfWork':
@@ -118,14 +120,15 @@ class HomeContainer extends React.Component {
       const { error, floading,fclear, title,details ,isHome} = this.props;
 
       return (
-        <div className="spread">
-          <div>
+        <Grid className="center-content">
+          <Grid.Row columns={16}>
               <Header Title={title}/>
-          </div>
+              <br/><br/>
+          </Grid.Row>
           {
               isHome
             ?
-                <div>
+                <Grid.Row   columns={16}>
                     {
                         floading
                         ?
@@ -135,10 +138,8 @@ class HomeContainer extends React.Component {
                         :
                         ''
                     }
-                    <div>
+                    {/* <div className="center-content"> */}
                         <TimeSheet
-                            // Detail={this.state.Detail}
-                            // errors={this.state.errors}
                             {...this.state}
                             WorkType={workType}
                             SetWorkType={this.setWorkType.bind(this)}
@@ -146,8 +147,8 @@ class HomeContainer extends React.Component {
                             OnNext={this.OnNext.bind(this)}
                             OnChange={this.OnChange.bind(this)}
                         />
-                    </div>
-                </div>
+                    {/* </div> */}
+                </Grid.Row  >
             :
                 <div>
                     <Submission 
@@ -159,7 +160,7 @@ class HomeContainer extends React.Component {
           
            }
           
-        </div>
+        </Grid>
       );
     }
   }

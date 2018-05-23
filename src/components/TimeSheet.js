@@ -63,9 +63,9 @@ const TimeSheet = ({ OnClear, OnNext, OnChange, Detail, errors, WorkType, SetWor
                     WorkType.length > 0 ? WorkType.map((f, i) => {
                         return (
                             <div key={i}>
-                                <Label name='TypeOfWork' id='TypeOfWork' onClick={e => { SetWorkType(f) }}>
+                                <label className={Detail.TypeOfWork === f?'labelClicked':''} name='TypeOfWork' id='TypeOfWork' onClick={e => { SetWorkType(f) }}>
                                     {f}
-                                </Label>
+                                </label>
                                 {
                                     Detail.TypeOfWork === f ? <Icon name='checkmark' color='green' /> : ""
                                 }

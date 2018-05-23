@@ -14,9 +14,9 @@ const Submission=({Email,Time,OnStartAgain})=>(
                     You have logged {Time} of work today
             </div>
         <div>
-                <Segment size='big' textAlign='center' inverted color='blue'>
+                <div className="nopadding" size='big' textAlign='center' inverted color='blue'>
                         <Button onClick={e => { OnStartAgain(e) }}>Start Again</Button>
-                </Segment>
+                </div>
 
         </div>
     </Segment>

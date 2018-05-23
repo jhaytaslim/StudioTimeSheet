@@ -1,9 +1,9 @@
 .spread {
     width: 100%;
-    border: 1px solid black;
+    border: 2px solid black;
     display: table;
     table-layout: fixed;
-    padding: 20px;
+    padding: -2px;
 }
 
 .frm-color{
@@ -12,5 +12,33 @@
 
 .ui.card {
     display: inline-block;
-    margin: 10px;
+    /* margin: 10px; */
+}
+
+.set-blue{
+    background-color:#2185d0 !important;
+}
+
+.center-content{
+    justify-content: center;
+    align-content: center;
+    
+}
+.app-header{
+    text-align: center;
+    align-self: center;
+    color:#ffffffde !important;
+    
+}
+.labelClicked {
+    /* float: left;
+    width: 100px; /* change this to whatever you want */
+    /* these make it look nicer */
+    /* text-align: right;
+    padding-right: 10px; */ 
+    color: rgb(64, 64, 238);
+}
+
+.nopadding{
+   padding: 0px;
 }
