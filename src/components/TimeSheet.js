@@ -8,15 +8,16 @@ const validateEmail=(e)=>{
 
 }
 const TimeSheet = ({ OnClear, OnNext, OnChange, Detail, errors, WorkType, SetWorkType }) => (
-    <Form className={'frm-color'}>
-        <Form.Field error={!!errors.Email}>
-            <div >
+    <Form className="form-size ">
+        <Form.Field   error={!!errors.Email}>
+            <div className="curve-text-div">
                 <input type="Email"
                     id="Email"
                     name="Email"
                     placeholder="jhay@example.com"
                     value={Detail.Email}
                     onChange={e => OnChange(e)}
+                    className="text-destyle"
                 />
                 {
                    !errors.GoodEmail ? "" :(errors.GoodEmail==='Valid'?
@@ -27,13 +28,14 @@ const TimeSheet = ({ OnClear, OnNext, OnChange, Detail, errors, WorkType, SetWor
             {errors.Email && <InlineError text={errors.Email} />}
         </Form.Field>
         <Form.Field error={!!errors.TimeSpent}>
-            <div >
+            <div className="curve-text-div">
                 <input
                     id="TimeSpent"
                     name="TimeSpent"
                     placeholder="Time : 12 hours 15 mins"
                     value={Detail.TimeSpent}
                     onChange={e => OnChange(e)}
+                    className="text-destyle"
                 />
                 {
                    !errors.GoodTime ? "" :(errors.GoodTime==='Valid'?
@@ -51,23 +53,24 @@ const TimeSheet = ({ OnClear, OnNext, OnChange, Detail, errors, WorkType, SetWor
                     placeholder="Message (optional): "
                     value={Detail.Message}
                     onChange={e => OnChange(e)}
+                    className="curve"
                 />
             </div>
 
             {errors.Message && <InlineError text={errors.Message} />}
         </Form.Field>
-        <div><label> What type of work is this for?</label></div>
+        <div className="clear-header"><label> What type of work is this for?</label></div>
         <Form.Field error={!!errors.TypeOfWork}>
             <div >
                 {
                     WorkType.length > 0 ? WorkType.map((f, i) => {
                         return (
-                            <div key={i}>
+                            <div className={i%2===0?"type-up":"type-down" }key={i}>
                                 <label className={Detail.TypeOfWork === f?'labelClicked':''} name='TypeOfWork' id='TypeOfWork' onClick={e => { SetWorkType(f) }}>
                                     {f}
                                 </label>
                                 {
-                                    Detail.TypeOfWork === f ? <Icon name='checkmark' color='green' /> : ""
+                                    Detail.TypeOfWork === f ? <Icon name='checkmark' className="space-icon-left" color='green' /> : ""
                                 }
                             </div>
                         )
@@ -78,7 +81,7 @@ const TimeSheet = ({ OnClear, OnNext, OnChange, Detail, errors, WorkType, SetWor
             {errors.TypeOfWork && <InlineError text={errors.TypeOfWork} />}
         </Form.Field>
        
-        <Segment size='big' textAlign='center' inverted color='blue'>
+        <Segment size='big' textAlign='center' inverted color='blue' className="clear-bottom">
             <Button onClick={e => { OnClear(e) }}><b>Clear</b></Button>
             <Button onClick={e => { OnNext(e) }}><b>Next</b></Button>
         </Segment>

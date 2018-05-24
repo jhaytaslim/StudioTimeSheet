@@ -3,7 +3,7 @@ import Validator from 'validator';
 import {clear,startAgain,showState,addDetail,loading,nextState,clearDone} from '../actions/index'
 import { connect } from 'react-redux';
 import {Header,Submission,TimeSheet} from '../components'
-import { Dimmer, Loader, Image, Segment,Grid } from 'semantic-ui-react'
+import { Dimmer, Loader, Image, Segment, Grid, Form, Checkbox,Button } from 'semantic-ui-react'
 
 const initialState={
     Email:'',
@@ -120,7 +120,7 @@ class HomeContainer extends React.Component {
       const { error, floading,fclear, title,details ,isHome} = this.props;
 
       return (
-        <Grid className="center-content">
+        <Grid className="center-content frm-color">
           <Grid.Row columns={16}>
               <Header Title={title}/>
               <br/><br/>
@@ -128,7 +128,7 @@ class HomeContainer extends React.Component {
           {
               isHome
             ?
-                <Grid.Row   columns={16}>
+                <Grid.Row className="center-content "  columns={16}>
                     {
                         floading
                         ?
@@ -150,13 +150,13 @@ class HomeContainer extends React.Component {
                     {/* </div> */}
                 </Grid.Row  >
             :
-                <div>
+                // <div className="frm-color">
                     <Submission 
                         Email={details[details.length-1].Email}
                         Time={details[details.length-1].TimeSpent}
                         OnStartAgain={this.OnStartAgain.bind(this)}
                     />
-                </div>
+                // </div>
           
            }
           
