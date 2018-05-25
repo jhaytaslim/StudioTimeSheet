@@ -9,7 +9,7 @@ import store from './reducer/store';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
-<BrowserRouter>
+<BrowserRouter /*basename={'/directory-name'}*/>
 <Provider store={store}>
 <App />
 </Provider>
